@@ -126,13 +126,13 @@
               property: "opacity",
               to: 1,
               dur: 400,
-              easing: "easeInOutQuad"
+              easing: "easeOutBounce"
             });
             el.setAttribute("animation__move", {
               property: "position",
               to: `0 0 ${z}`,
               dur: 400,
-              easing: "easeInOutQuad"
+              easing: "easeOutBounce"
             });
             await delay(500);
           }
