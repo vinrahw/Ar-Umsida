@@ -21,30 +21,49 @@
     </button>
   </div>
   <div class="container">
-    <a-scene
+<a-scene mindar-image="imageTargetSrc: targets(1).mind; showStats: false; uiScanning: #example-scanning-overlay;" 
+embedded color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" 
+vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+<!--     <a-scene
       mindar-image="imageTargetSrc: targets(1).mind; filterMinCF: 0.001; filterBeta: 0.01;"
       vr-mode-ui="enabled: false"
       device-orientation-permission-ui="enabled: false"
       embedded
       color-space="sRGB"
-      renderer="precision: mediump">
+      renderer="precision: mediump"> -->
       
     <a-assets>
-        <a-video width="320" height="240" autoplay>
-          <source id="layer1" src="transisigedung.mp4" type="video/mp4">
-<!--           <source src="movie.ogg" type="video/ogg"> -->
-          Your browser does not support the video tag.
-        </video>
+        <video style="opacity: 0;" id="video" src="./transisigedung.mp4" loop autoplay muted></video>
+        <video style="opacity: 0;" id="vid" src="./transisigedung.mp4" loop autoplay></video>
 <!--         <img id="layer1" src="gel3.png" />
         <img id="layer2" src="kampus1-1.png" />
         <img id="layer3" src="kampus3-3.png" />
         <img id="layer4" src="kampus2-2.png" />
         <img id="layer5" src="umsida5.png" /> -->
-  
       </a-assets>
-      <a-camera class="a-camera" look-controls="enabled: false"></a-camera>
+    
+    <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+    <a-entity id="mytarget" mytarget mindar-image-target="targetIndex: 0">
+        <a-text value="" id="text-en" color="purple" align="center" width="2" position="0 0.4 0"
+        animation="property: position; to: 0 0.5 0; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"
+        ></a-text>
+        <a-video src="#vid" position="0 0 0.2" rotation="0 0 0" width="0.0" height="0.0"></a-video>
+        <!-- <a-plane src="#card" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane> -->
+        <a-plane 
+        id="dan-plane"
+        material="
+        shader: chromakey; 
+        src: #video; 
+        color: 0.1 0.9 0.2" 
+        position="0 0 -1" 
+        scale="1.3 1.3 1.3"
+        rotation="80 0 0"  
+      ></a-plane>        
+    </a-entity>
+    
+<!--       <a-camera class="a-camera" look-controls="enabled: false"></a-camera>
         <!-- Target 0 -->
-    <a-entity id="target0" mindar-image-target="targetIndex: 0">
+   <!-- <a-entity id="target0" mindar-image-target="targetIndex: 0"> -->
     <!--   <a-image id="img0-1" src="#layer1" opacity="0" position="0 0 -0.2" scale="2 2 2" alpha-test="0.5" material="shader: flat; transparent: true; alphaTest: 0.3"></a-image>
 <!--       <a-image id="img0-2" src="#layer2" opacity="0" position="0 0 -0.2" scale="2 2 2" alpha-test="0.5" material="shader: flat; transparent: true; alphaTest: 0.3"></a-image>
       <a-image id="img0-3" src="#layer3" opacity="0" position="0 0 -0.2" scale="2 2 2" alpha-test="0.5" material="shader: flat; transparent: true; alphaTest: 0.3"></a-image>
@@ -54,10 +73,10 @@
       <a-image id="img0-7" src="#layer7" opacity="0" position="0 0 -0.2" scale="2 2 2" alpha-test="0.5" material="shader: flat; transparent: true; alphaTest: 0.3"></a-image>
       <a-image id="img0-8" src="#layer8" opacity="0" position="0 0 -0.2" scale="2 2 2" alpha-test="0.5" material="shader: flat; transparent: true; alphaTest: 0.3"></a-image> -->
 
-    </a-entity>
+  <!--  </a-entity>
 
     <!-- Target 1 -->
-    <a-entity id="target1" mindar-image-target="targetIndex: 1">
+  <!--  <a-entity id="target1" mindar-image-target="targetIndex: 1">
      <!--  <a-image id="img1-1" src="#layer1" opacity="0" position="0 0 -0.2" scale="2 2 2" alpha-test="0.5" material="shader: flat; transparent: true; alphaTest: 0.3"></a-image>
 <!--       <a-image id="img1-2" src="#layer2" opacity="0" position="0 0 -0.2" scale="2 2 2" alpha-test="0.5" material="shader: flat; transparent: true; alphaTest: 0.3"></a-image>
       <a-image id="img1-3" src="#layer3" opacity="0" position="0 0 -0.2" scale="2 2 2" alpha-test="0.5" material="shader: flat; transparent: true; alphaTest: 0.3"></a-image>
@@ -66,11 +85,11 @@
 <!--       <a-image id="img1-6" src="#layer6" opacity="0" position="0 0 -0.2" scale="2 2 2" alpha-test="0.5" material="shader: flat; transparent: true; alphaTest: 0.3"></a-image>
       <a-image id="img1-7" src="#layer7" opacity="0" position="0 0 -0.2" scale="2 2 2" alpha-test="0.5" material="shader: flat; transparent: true; alphaTest: 0.3"></a-image>
       <a-image id="img1-8" src="#layer8" opacity="0" position="0 0 -0.2" scale="2 2 2" alpha-test="0.5" material="shader: flat; transparent: true; alphaTest: 0.3"></a-image> -->
-    </a-entity>
+  <!--  </a-entity>
     </a-entity>
 
     <!-- Target 2 -->
-    <a-entity id="target2" mindar-image-target="targetIndex: 2">
+   <!-- <a-entity id="target2" mindar-image-target="targetIndex: 2">
    <!--    <a-image id="img2-1" src="#layer1" opacity="0" position="0 0 -0.2" scale="2 2 2" alpha-test="0.5" material="shader: flat; transparent: true; alphaTest: 0.3"></a-image>
 <!--       <a-image id="img2-2" src="#layer2" opacity="0" position="0 0 -0.2" scale="2 2 2" alpha-test="0.5" material="shader: flat; transparent: true; alphaTest: 0.3"></a-image>
       <a-image id="img2-3" src="#layer3" opacity="0" position="0 0 -0.2" scale="2 2 2" alpha-test="0.5" material="shader: flat; transparent: true; alphaTest: 0.3"></a-image>
@@ -79,10 +98,10 @@
 <!--       <a-image id="img2-6" src="#layer6" opacity="0" position="0 0 -0.2" scale="2 2 2" alpha-test="0.5" material="shader: flat; transparent: true; alphaTest: 0.3"></a-image>
       <a-image id="img2-7" src="#layer7" opacity="0" position="0 0 -0.2" scale="2 2 2" alpha-test="0.5" material="shader: flat; transparent: true; alphaTest: 0.3"></a-image>
       <a-image id="img2-8" src="#layer8" opacity="0" position="0 0 -0.2" scale="2 2 2" alpha-test="0.5" material="shader: flat; transparent: true; alphaTest: 0.3"></a-image> -->
-    </a-entity>
+  <!--  </a-entity>
 
     <!-- Target 3 -->
-    <a-entity id="target3" mindar-image-target="targetIndex: 3">
+<!--    <a-entity id="target3" mindar-image-target="targetIndex: 3">
      <!--  <a-image id="img3-1" src="#layer1" opacity="0" position="0 0 -0.2" scale="2 2 2" alpha-test="0.5" material="shader: flat; transparent: true; alphaTest: 0.3"></a-image> 
 <!--       <a-image id="img3-2" src="#layer2" opacity="0" position="0 0 -0.2" scale="2 2 2" alpha-test="0.5" material="shader: flat; transparent: true; alphaTest: 0.3"></a-image>
       <a-image id="img3-3" src="#layer3" opacity="0" position="0 0 -0.2" scale="2 2 2" alpha-test="0.5" material="shader: flat; transparent: true; alphaTest: 0.3"></a-image>
@@ -91,7 +110,7 @@
 <!--       <a-image id="img3-6" src="#layer6" opacity="0" position="0 0 -0.2" scale="2 2 2" alpha-test="0.5" material="shader: flat; transparent: true; alphaTest: 0.3"></a-image>
       <a-image id="img3-7" src="#layer7" opacity="0" position="0 0 -0.2" scale="2 2 2" alpha-test="0.5" material="shader: flat; transparent: true; alphaTest: 0.3"></a-image>
       <a-image id="img3-8" src="#layer8" opacity="0" position="0 0 -0.2" scale="2 2 2" alpha-test="0.5" material="shader: flat; transparent: true; alphaTest: 0.3"></a-image>  -->
-    </a-entity>
+  <!--  </a-entity>-->
     </a-scene>
   </div>
 </body>
@@ -112,12 +131,12 @@
       });
 
       // Target IDs
-      const targetIDs = ["target0", "target1", "target2", "target3"];
+      // const targetIDs = ["target0", "target1", "target2", "target3"];
 
-      targetIDs.forEach((id, index) => {
-        const target = document.querySelector(`#${id}`);
-        const layers = [
-          { el: document.querySelector(`#img${index}-1`), z: 0.9 },
+      // targetIDs.forEach((id, index) => {
+      //   const target = document.querySelector(`#${id}`);
+      //   const layers = [
+      //     { el: document.querySelector(`#img${index}-1`), z: 0.9 },
           // { el: document.querySelector(`#img${index}-2`), z: 0.8 },
           // { el: document.querySelector(`#img${index}-3`), z: 0.7 },
           // { el: document.querySelector(`#img${index}-4`), z: 0.6 },
